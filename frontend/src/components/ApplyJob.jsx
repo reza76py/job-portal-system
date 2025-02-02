@@ -7,7 +7,7 @@ const ApplyJob = () => {
   const [coverLetter, setCoverLetter] = useState("");
 
   const handleSubmit = () => {
-    axios.post(`http://127.0.0.1:8000/api/jobs/apply/${jobId}/`, { cover_letter: coverLetter })
+    axios.post("http://127.0.0.1:8000/api/jobs/")
       .then(response => alert("Application submitted!"))
       .catch(error => console.error(error));
   };

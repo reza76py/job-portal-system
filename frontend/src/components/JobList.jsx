@@ -3,14 +3,24 @@ import axios from "axios";
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
+  const token = localStorage.getItem("token");  // Retrieve token from localStorage
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/jobs")
+    if (!token) {
+      console.error("No token found, user might not be logged in.");
+      return;
+    }
+
+    axios.get("http://127.0.0.1:8000/api/jobs/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
       .then(response => {
         setJobs(response.data);
       })
-      .catch(error => console.error(error));
-  }, []);
+      .catch(error => console.error("Error fetching jobs:", error));
+  }, [token]);
 
   return (
     <div>

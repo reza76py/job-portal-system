@@ -1,6 +1,7 @@
 import React from "react"
 import ApplyJob from "./components/ApplyJob"
 import JobList from "./components/JobList"
+import Login from "./components/Login"
 
 function App() {
 
@@ -11,6 +12,8 @@ function App() {
       <JobList />
 
       <ApplyJob />
+
+      <Login />
 
     </div>
   )
